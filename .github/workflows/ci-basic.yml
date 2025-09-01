@@ -53,7 +53,7 @@ jobs:
     - name: Download artifacts "build-output"
       uses: actions/download-artifact@v4
       with:
-        name: build-output
+        name: build-outpu
         path: ./input
 
     - name: Show downloaded files
