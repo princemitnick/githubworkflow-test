@@ -1,0 +1,28 @@
+name: CI Basic (2 jobs echo)
+
+on:
+  push:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+env:
+  GLOBAL_MSG: "Hello from repo env"
+
+jobs:
+  job_one:
+    name: First Job
+    runs-on: self-hosted
+    steps:
+      - name: Echo from job one
+        run: |
+          echo "Job 1 says hi"
+          echo "GLOBAL_MSG= $GLOBAL_MSG"
+  
+  job_two:
+    name: Second Job
+    needs: job_one
+    runs-on: self-hosted
+    steps:
+    - name: Echo from job two
+      run: |
+        echo "Job 2 after Job 1"
