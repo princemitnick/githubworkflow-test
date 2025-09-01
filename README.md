@@ -1,5 +1,5 @@
-# 🚀 My GitHub Actions Lab
+# GitHub Action Lab
 
 ## CI with Artifacts
-![CI Basic (2 jobs echo)](https://github.com/pipo-lab/simple-actions/actions/workflows/ci-artifacts.yml/badge.svg?branch=main)
+![PIPO CI](https://github.com/princemitnick/actions/workflows/ci-basic.yml/badge.svg?branch=main)
 

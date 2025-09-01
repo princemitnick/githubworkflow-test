@@ -1,4 +1,4 @@
-name: CI Basic (2 jobs echo)
+name: PIPO CI
 
 on:
   push:
