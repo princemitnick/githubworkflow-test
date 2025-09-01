@@ -25,6 +25,21 @@ jobs:
           echo "$RUN_NUMBER"
     env:
       A_K: "DKJALFKJ$@#KJLKFDJLKJFLDKSJFSDF"
+
+    steps:
+      - name: Create files
+        run |
+          mkdir -p out
+          echo "Hello From Job1 at $(date -u)" > out/message.txt
+          echo "Meta files" > out/extra.txt
+      
+      - name: UPload artifact "build-output"
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-output
+          path: out/
+          if-no-files-found: error
+          retention-days: 7
   
   job_two:
     name: Second Job
@@ -35,3 +50,17 @@ jobs:
       run: |
         echo "Job 2 after Job 1"
         echo "$C_K"
+    
+    steps:
+    - name: Download artifacts "build-output"
+      uses: actions/download-artifact@v4
+      with:
+        name: build-output
+        path: ./input
+
+    - name: Show downloaded files
+      run: |
+        echo "Listing ./input"
+        ls -lah ./input
+        echo "Content of message.txt:"
+        cat ./input/message.txt
