@@ -1,5 +1,6 @@
 # GitHub Action Lab
 
 ## CI with Artifacts
-![PIPO CI](https://github.com/princemitnick/actions/workflows/ci-basic.yml/badge.svg?branch=main)
+# GitHub Workflow Test
 
+[![CI Basic](https://github.com/princemitnick/githubworkflow-test/actions/workflows/ci-basic.yml/badge.svg?branch=main)](https://github.com/princemitnick/githubworkflow-test/actions/workflows/ci-basic.yml)
