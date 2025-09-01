@@ -34,4 +34,4 @@ jobs:
     - name: Echo from job two
       run: |
         echo "Job 2 after Job 1"
-        echo "$A_K"
+        echo "$C_K"
