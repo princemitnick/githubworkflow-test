@@ -13,10 +13,11 @@ env:
 
 jobs:
   job_one:
+    env:
+      A_K: "DKJALFKJ$@#KJLKFDJLKJFLDKSJFSDF"
     name: First Job
     runs-on: self-hosted
     steps:
-      step:
       - name: Echo from job one
         run: |
           echo "Job 1 says hi"
@@ -24,15 +25,12 @@ jobs:
           echo "$A_K"
           echo "$C_K"
           echo "$RUN_NUMBER"
-  env:
-  A_K: "DKJALFKJ$@#KJLKFDJLKJFLDKSJFSDF"
 
-      step:
       - name: Create files
-          run |
-            mkdir -p out
-            echo "Hello From Job1 at $(date -u)" > out/message.txt
-            echo "Meta files" > out/extra.txt
+        run |
+          mkdir -p out
+          echo "Hello From Job1 at $(date -u)" > out/message.txt
+          echo "Meta files" > out/extra.txt
       
       - name: UPload artifact "build-output"
         uses: actions/upload-artifact@v4
@@ -47,22 +45,20 @@ jobs:
     needs: job_one
     runs-on: self-hosted
     steps:
-      step:
-      - name: Echo from job two
-        run: |
-          echo "Job 2 after Job 1"
-          echo "$C_K"
-    
-      step:
-      - name: Download artifacts "build-output"
-        uses: actions/download-artifact@v4
-        with:
-          name: build-output
-          path: ./input
+    - name: Echo from job two
+      run: |
+        echo "Job 2 after Job 1"
+        echo "$C_K"
+        
+    - name: Download artifacts "build-output"
+      uses: actions/download-artifact@v4
+      with:
+        name: build-output
+        path: ./input
 
-      - name: Show downloaded files
-        run: |
-          echo "Listing ./input"
-          ls -lah ./input
-          echo "Content of message.txt:"
-          cat ./input/message.txt
+    - name: Show downloaded files
+      run: |
+        echo "Listing ./input"
+        ls -lah ./input
+        echo "Content of message.txt:"
+        cat ./input/message.txt
