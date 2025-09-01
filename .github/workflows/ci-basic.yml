@@ -7,6 +7,7 @@ on:
 
 env:
   GLOBAL_MSG: "Hello from repo env"
+  RUN_NUMBER: ${{ github.run_number }}
 
 jobs:
   job_one:
@@ -17,6 +18,11 @@ jobs:
         run: |
           echo "Job 1 says hi"
           echo "GLOBAL_MSG= $GLOBAL_MSG"
+          echo "$A_K"
+          echo "$CK"
+    env:
+      A_K: "DKJALFKJ$@#KJLKFDJLKJFLDKSJFSDF"
+      C_K: "JKDLFKJA#@#@JLFKDJFLKJFLDKSJFLKSDJFL"
   
   job_two:
     name: Second Job
@@ -26,3 +32,4 @@ jobs:
     - name: Echo from job two
       run: |
         echo "Job 2 after Job 1"
+        echo "$A_K"
