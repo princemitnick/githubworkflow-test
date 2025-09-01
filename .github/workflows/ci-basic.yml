@@ -28,10 +28,10 @@ jobs:
 
     steps:
       - name: Create files
-        run |
-          mkdir -p out
-          echo "Hello From Job1 at $(date -u)" > out/message.txt
-          echo "Meta files" > out/extra.txt
+          run |
+            mkdir -p out
+            echo "Hello From Job1 at $(date -u)" > out/message.txt
+            echo "Meta files" > out/extra.txt
       
       - name: UPload artifact "build-output"
         uses: actions/upload-artifact@v4
